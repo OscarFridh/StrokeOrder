@@ -21,9 +21,55 @@ function str_split_unicode($str, $l = 0) {
     return preg_split("//u", $str, -1, PREG_SPLIT_NO_EMPTY);
 }
 
-
 $characters = str_split_unicode($text);
-foreach ($characters as $character) {
-    echo $character . '<BR>';
-}
+
+?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Stroke Order</title>
+    <script src="https://cdn.jsdelivr.net/npm/hanzi-writer@2.0.2/dist/hanzi-writer.min.js"></script>
+
+    <style>
+        #container {
+            display: flex;
+            flex-wrap: wrap;
+        }
+    </style>
+</head>
+<body>
+<div id="container">
+    <?php
+    // Set an id for each character so that they can be uniquely referenced by the java script below
+    foreach($characters as $index => $character): ?>
+        <div class="hanzi-character" id="character-target-div-<?= $index ?>"></div>
+    <?php endforeach ?>
+</div>
+<script>
+
+    // Passing the data from PHP to Javascript
+    var text = "<?= $text ?>";
+
+    for (var i = 0; i < text.length; i++) {
+
+        let id = 'character-target-div-'+i
+        let character = text.charAt(i);
+
+        let writer = HanziWriter.create(id, character, {
+            width: 200,
+            height: 200,
+            padding: 5,
+            strokeAnimationSpeed: 1,
+            delayBetweenStrokes: 200 // ms
+        });
+
+        document.getElementById(id).addEventListener('click', function() {
+            writer.animateCharacter();
+        });
+    }
+</script>
+
+</body>
+</html>
 
