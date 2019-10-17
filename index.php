@@ -33,21 +33,25 @@ $characters = str_split_unicode($input_text);
 </div>
 <script>
 
+    function hanziWriterElementWithId(id) {
+        return document.getElementById('character-target-div-' + id);
+    }
+
+    function characterParagraphWithId(id) {
+        return document.getElementById('character-paragraph-' + id);
+    }
+
     const text = '<?= $input_text ?>';
 
     for (let i = 0; i < text.length; i++) {
 
         const character = text.charAt(i);
 
-        // Strings used to look up elements by id
-        const characterTargetDivId = 'character-target-div-' + i;
-        const characterParagraphId = 'character-paragraph-' + i;
-
         // A reference to the element used by hanzi-writer to render chinese characters
-        const hanziWriterElement = document.getElementById(characterTargetDivId);
+        const hanziWriterElement = hanziWriterElementWithId(i);
 
         // Create and configure the object responsible for rendering this chinese character
-        const writer = HanziWriter.create(characterTargetDivId, character, {
+        const writer = HanziWriter.create(hanziWriterElement.id, character, {
             width: 200,
             height: 200,
             padding: 5,
@@ -56,8 +60,7 @@ $characters = str_split_unicode($input_text);
             onLoadCharDataSuccess() {
 
                 // Display the hanziWriterElement only
-                const paragraphElement = document.getElementById(characterParagraphId);
-                paragraphElement.remove();
+                characterParagraphWithId(i).remove();
 
                 /**
                  * TODO:
