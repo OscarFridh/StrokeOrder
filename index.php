@@ -16,18 +16,7 @@ $characters = str_split_unicode($input_text);
     <meta charset="UTF-8">
     <title>Stroke Order</title>
     <script src="https://cdn.jsdelivr.net/npm/hanzi-writer@2.0.2/dist/hanzi-writer.min.js"></script>
-
-    <style>
-        #container {
-            display: flex;
-            flex-wrap: wrap;
-        }
-
-        .raw-text {
-            font-size: 82px;
-        }
-
-    </style>
+    <link rel="stylesheet" href="styling.css">
 </head>
 <body>
 <div id="container">
