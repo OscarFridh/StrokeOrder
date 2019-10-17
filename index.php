@@ -35,13 +35,13 @@ $characters = str_split_unicode($input_text);
 </div>
 <script>
 
-    const text = "<?= $input_text ?>";
+    const text = '<?= $input_text ?>';
 
     for (let i = 0; i < text.length; i++) {
 
         const character = text.charAt(i);
-        const characterTargetDivID = 'character-target-div-'+i;
-        const characterParagraphID = 'character-paragraph-'+i;
+        const characterTargetDivId = 'character-target-div-'+i;
+        const characterParagraphId = 'character-paragraph-'+i;
 
         const writer = HanziWriter.create('character-target-div-' + i, character, {
             width: 200,
@@ -50,7 +50,7 @@ $characters = str_split_unicode($input_text);
             strokeAnimationSpeed: 1,
             delayBetweenStrokes: 200, // ms,
             onLoadCharDataSuccess() {
-                const paragraphElement = document.getElementById(characterParagraphID);
+                const paragraphElement = document.getElementById(characterParagraphId);
                 paragraphElement.remove();
                 /**
                  * TODO:
@@ -60,12 +60,12 @@ $characters = str_split_unicode($input_text);
                  */
             },
             onLoadCharDataError() {
-                const hanziWriterElement = document.getElementById(characterTargetDivID);
+                const hanziWriterElement = document.getElementById(characterTargetDivId);
                 hanziWriterElement.remove();
             }
         });
 
-        const hanziWriterElement = document.getElementById(characterTargetDivID);
+        const hanziWriterElement = document.getElementById(characterTargetDivId);
         hanziWriterElement.addEventListener('click', function() {
             writer.animateCharacter();
         });
