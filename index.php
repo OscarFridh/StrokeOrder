@@ -24,59 +24,56 @@ $characters = str_split_unicode($input_text);
     <div id="character-container-<?= $index ?>">
         <?php
         /*
-         * Set an id for each character-target-div so that they can be uniquely referenced by the java script below.
-         * Also allow for special characters that cannot be rendered by hanzi-writers.
-         * One of these elements will be removed depending on weather the character is supported by hanzi-writer or not.
+         * Set an id so that the elements can be uniquely referenced by the java script below.
+         * One of these elements will be deleted later on.
          * */
         ?>
         <div class="hanzi-character" id="character-target-div-<?= $index ?>"></div>
-        <p class="raw-text"><?= $character ?></p>
+        <p class="raw-text" id="character-paragraph-<?= $index ?>"><?= $character ?></p>
     </div>
     <?php endforeach ?>
 </div>
 <script>
 
-    <?php /* Passing data from PHP to Javascript */ ?>
-    var text = "<?= $input_text ?>";
+    const text = "<?= $input_text ?>";
 
-    for (var i = 0; i < text.length; i++) {
+    for (let i = 0; i < text.length; i++) {
 
-        let characterContainerID = 'character-container-'+i;
-        let character = text.charAt(i);
+        const characterContainerID = 'character-container-'+i;
+        const character = text.charAt(i);
 
 
-        let writer = HanziWriter.create('character-target-div-' + i, character, {
+        const writer = HanziWriter.create('character-target-div-' + i, character, {
             width: 200,
             height: 200,
             padding: 5,
             strokeAnimationSpeed: 1,
             delayBetweenStrokes: 200, // ms,
             onLoadCharDataSuccess() {
-                let characterContainer = document.getElementById(characterContainerID);
-                let paragraphElement = characterContainer.getElementsByClassName('raw-text')[0];
+                const characterContainer = document.getElementById(characterContainerID);
+                const paragraphElement = characterContainer.getElementsByClassName('raw-text')[0];
                 paragraphElement.remove();
                 /**
                  * TODO:
                  * Avoid 404 error from hanzi-writer-data API call.
                  * Maybe possible to check if exists before request?
-                 * Maybe possible to load the characters in advance and avoid loading dublicates.
+                 * Maybe possible to load the characters in advance and avoid loading duplicates.
                  */
             },
             onLoadCharDataError() {
-                let characterContainer = document.getElementById(characterContainerID);
-                let hanziWriterElement = characterContainer.getElementsByClassName('hanzi-character')[0];
+                const characterContainer = document.getElementById(characterContainerID);
+                const hanziWriterElement = characterContainer.getElementsByClassName('hanzi-character')[0];
                 hanziWriterElement.remove();
             }
         });
 
-        let characterContainer = document.getElementById(characterContainerID);
-        let hanziWriterElement = characterContainer.getElementsByClassName('hanzi-character')[0];
+        const characterContainer = document.getElementById(characterContainerID);
+        const hanziWriterElement = characterContainer.getElementsByClassName('hanzi-character')[0];
         hanziWriterElement.addEventListener('click', function() {
             writer.animateCharacter();
         });
     }
 </script>
-
 </body>
 </html>
 
