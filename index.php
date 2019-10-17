@@ -1,7 +1,7 @@
 <?php
 
-$text = $_GET['text'];
-if(!$text) {
+$input_text = $_GET['text'];
+if(!$input_text) {
     die('No text to display.');
 }
 
@@ -21,7 +21,7 @@ function str_split_unicode($str, $l = 0) {
     return preg_split("//u", $str, -1, PREG_SPLIT_NO_EMPTY);
 }
 
-$characters = str_split_unicode($text);
+$characters = str_split_unicode($input_text);
 
 ?>
 <!DOCTYPE html>
@@ -45,11 +45,15 @@ $characters = str_split_unicode($text);
 </head>
 <body>
 <div id="container">
-    <?php
-    // Set an id for each character so that they can be uniquely referenced by the java script below.
-    foreach($characters as $index => $character): ?>
+    <?php foreach($characters as $index => $character): ?>
     <div id="character-container-<?= $index ?>">
-        <?php /* Also allow for special characters that cannot be rendered by hanzi-writers. Only one of the elements should be displayed. */ ?>
+        <?php
+        /*
+         * Set an id for each character-target-div so that they can be uniquely referenced by the java script below.
+         * Also allow for special characters that cannot be rendered by hanzi-writers.
+         * One of these elements will be removed depending on weather the character is supported by hanzi-writer or not.
+         * */
+        ?>
         <div class="hanzi-character" id="character-target-div-<?= $index ?>"></div>
         <p class="raw-text"><?= $character ?></p>
     </div>
@@ -57,8 +61,8 @@ $characters = str_split_unicode($text);
 </div>
 <script>
 
-    // Passing the data from PHP to Javascript
-    var text = "<?= $text ?>";
+    <?php /* Passing data from PHP to Javascript */ ?>
+    var text = "<?= $input_text ?>";
 
     for (var i = 0; i < text.length; i++) {
 
@@ -76,7 +80,12 @@ $characters = str_split_unicode($text);
                 let characterContainer = document.getElementById(characterContainerID);
                 let paragraphElement = characterContainer.getElementsByClassName('raw-text')[0];
                 paragraphElement.remove();
-                // TODO: Avoid 404 error from hanzi-writer-data API call. Maybe possible to check if exists before request?
+                /**
+                 * TODO:
+                 * Avoid 404 error from hanzi-writer-data API call.
+                 * Maybe possible to check if exists before request?
+                 * Maybe possible to load the characters in advance and avoid loading dublicates.
+                 */
             },
             onLoadCharDataError() {
                 let characterContainer = document.getElementById(characterContainerID);
