@@ -36,14 +36,23 @@ $characters = str_split_unicode($text);
             display: flex;
             flex-wrap: wrap;
         }
+
+        .raw-text {
+            font-size: 82px;
+        }
+
     </style>
 </head>
 <body>
 <div id="container">
     <?php
-    // Set an id for each character so that they can be uniquely referenced by the java script below
+    // Set an id for each character so that they can be uniquely referenced by the java script below.
     foreach($characters as $index => $character): ?>
+    <div id="character-container-<?= $index ?>">
+        <?php /* Also allow for special characters that cannot be rendered by hanzi-writers. Only one of the elements should be displayed. */ ?>
         <div class="hanzi-character" id="character-target-div-<?= $index ?>"></div>
+        <p class="raw-text"><?= $character ?></p>
+    </div>
     <?php endforeach ?>
 </div>
 <script>
@@ -53,18 +62,32 @@ $characters = str_split_unicode($text);
 
     for (var i = 0; i < text.length; i++) {
 
-        let id = 'character-target-div-'+i
+        let characterContainerID = 'character-container-'+i;
         let character = text.charAt(i);
 
-        let writer = HanziWriter.create(id, character, {
+
+        let writer = HanziWriter.create('character-target-div-' + i, character, {
             width: 200,
             height: 200,
             padding: 5,
             strokeAnimationSpeed: 1,
-            delayBetweenStrokes: 200 // ms
+            delayBetweenStrokes: 200, // ms,
+            onLoadCharDataSuccess() {
+                let characterContainer = document.getElementById(characterContainerID);
+                let paragraphElement = characterContainer.getElementsByClassName('raw-text')[0];
+                paragraphElement.remove();
+                // TODO: Avoid 404 error from hanzi-writer-data API call. Maybe possible to check if exists before request?
+            },
+            onLoadCharDataError() {
+                let characterContainer = document.getElementById(characterContainerID);
+                let hanziWriterElement = characterContainer.getElementsByClassName('hanzi-character')[0];
+                hanziWriterElement.remove();
+            }
         });
 
-        document.getElementById(id).addEventListener('click', function() {
+        let characterContainer = document.getElementById(characterContainerID);
+        let hanziWriterElement = characterContainer.getElementsByClassName('hanzi-character')[0];
+        hanziWriterElement.addEventListener('click', function() {
             writer.animateCharacter();
         });
     }
