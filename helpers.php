@@ -3,7 +3,8 @@
 // Define a function for splitting a string into unicode characters
 // as the native function str_split does not support unicode.
 // https://www.php.net/manual/en/function.str-split.php
-function str_split_unicode($str, $l = 0) {
+function str_split_unicode($str, $l = 0)
+{
     if ($l > 0) {
         $ret = array();
         $len = mb_strlen($str, "UTF-8");
