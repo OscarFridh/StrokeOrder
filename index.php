@@ -21,7 +21,7 @@ $characters = str_split_unicode($input_text);
 <body>
 <div id="container">
     <?php foreach($characters as $index => $character): ?>
-    <div id="character-container-<?= $index ?>">
+    <div class="character-container">
         <?php
         /*
          * Set an id so that the elements can be uniquely referenced by the java script below.
@@ -39,9 +39,9 @@ $characters = str_split_unicode($input_text);
 
     for (let i = 0; i < text.length; i++) {
 
-        const characterContainerID = 'character-container-'+i;
         const character = text.charAt(i);
-
+        const characterTargetDivID = 'character-target-div-'+i;
+        const characterParagraphID = 'character-paragraph-'+i;
 
         const writer = HanziWriter.create('character-target-div-' + i, character, {
             width: 200,
@@ -50,8 +50,7 @@ $characters = str_split_unicode($input_text);
             strokeAnimationSpeed: 1,
             delayBetweenStrokes: 200, // ms,
             onLoadCharDataSuccess() {
-                const characterContainer = document.getElementById(characterContainerID);
-                const paragraphElement = characterContainer.getElementsByClassName('raw-text')[0];
+                const paragraphElement = document.getElementById(characterParagraphID);
                 paragraphElement.remove();
                 /**
                  * TODO:
@@ -61,14 +60,12 @@ $characters = str_split_unicode($input_text);
                  */
             },
             onLoadCharDataError() {
-                const characterContainer = document.getElementById(characterContainerID);
-                const hanziWriterElement = characterContainer.getElementsByClassName('hanzi-character')[0];
+                const hanziWriterElement = document.getElementById(characterTargetDivID);
                 hanziWriterElement.remove();
             }
         });
 
-        const characterContainer = document.getElementById(characterContainerID);
-        const hanziWriterElement = characterContainer.getElementsByClassName('hanzi-character')[0];
+        const hanziWriterElement = document.getElementById(characterTargetDivID);
         hanziWriterElement.addEventListener('click', function() {
             writer.animateCharacter();
         });
