@@ -1,8 +1,12 @@
-#container {
+#text-container {
     display: flex;
     flex-wrap: wrap;
 }
 
 .raw-text {
     font-size: 82px;
+}
+
+textarea {
+    width: 100%;
 }

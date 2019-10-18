@@ -20,16 +20,22 @@ $characters = str_split_unicode($input_text);
 </head>
 <body>
 <div id="container">
-    <?php foreach ($characters as $index => $character): ?>
-        <div class="character-container">
-            <?php /*
+    <form>
+        <textarea name="text" id="input" cols="30" rows="10"></textarea>
+        <button>Submit</button>
+    </form>
+    <div id="text-container">
+        <?php foreach ($characters as $index => $character): ?>
+            <div class="character-container">
+                <?php /*
              * Set an id so that the elements can be uniquely referenced by the java script below.
              * One of these elements will be removed later on.
              * */ ?>
-            <div class="hanzi-character" id="character-target-div-<?= $index ?>"></div>
-            <p class="raw-text" id="character-paragraph-<?= $index ?>"><?= $character ?></p>
-        </div>
-    <?php endforeach ?>
+                <div class="hanzi-character" id="character-target-div-<?= $index ?>"></div>
+                <p class="raw-text" id="character-paragraph-<?= $index ?>"><?= $character ?></p>
+            </div>
+        <?php endforeach ?>
+    </div>
 </div>
 <script>
 
