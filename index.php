@@ -3,7 +3,6 @@
 require_once 'helpers.php';
 
 $input_text = $_GET['text'];
-
 $characters = str_split_unicode($input_text);
 
 ?>
@@ -17,6 +16,7 @@ $characters = str_split_unicode($input_text);
 </head>
 <body>
 <div id="container">
+    <a href="https://github.com/OscarFridh/StrokeOrder">Project on Github</a>
     <form>
         <textarea name="text" id="input" cols="30" rows="10" placeholder="Enter a text in chinese characters"><?= $input_text ?></textarea>
         <button>Submit</button>
