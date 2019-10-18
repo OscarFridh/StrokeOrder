@@ -3,9 +3,6 @@
 require_once 'helpers.php';
 
 $input_text = $_GET['text'];
-if (!$input_text) {
-    die('No text to display.');
-}
 
 $characters = str_split_unicode($input_text);
 
@@ -21,7 +18,7 @@ $characters = str_split_unicode($input_text);
 <body>
 <div id="container">
     <form>
-        <textarea name="text" id="input" cols="30" rows="10"></textarea>
+        <textarea name="text" id="input" cols="30" rows="10" placeholder="Enter a text in chinese characters"><?= $input_text ?></textarea>
         <button>Submit</button>
     </form>
     <div id="text-container">
