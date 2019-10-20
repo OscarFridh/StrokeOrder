@@ -44,9 +44,7 @@ $characters = str_split_unicode($input_text);
         return document.getElementById('character-paragraph-' + id);
     }
 
-    // Returns true if the given character does not include any chinese characters
-    // For example: question marks, dots, exclamation marks, etc...
-    // Expects a string with a single character
+    // Returns true if a given unicode character does not represent a chinese character
     function notChinese(character) {
         // https://stackoverflow.com/questions/11206443/how-can-i-check-if-variable-contains-chinese-japanese-characters
         return !character.match(/[\u3400-\u9FBF]/)
@@ -61,6 +59,7 @@ $characters = str_split_unicode($input_text);
         // A reference to the element used by hanzi-writer to render chinese characters
         const hanziWriterElement = hanziWriterElementWithId(i);
 
+        // Avoid unnecessary network calls
         if (notChinese(character)) {
             hanziWriterElement.remove();
             continue;
