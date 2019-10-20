@@ -44,6 +44,14 @@ $characters = str_split_unicode($input_text);
         return document.getElementById('character-paragraph-' + id);
     }
 
+    // Returns true if the given character does not include any chinese characters
+    // For example: question marks, dots, exclamation marks, etc...
+    // Expects a string with a single character
+    function notChinese(character) {
+        // https://stackoverflow.com/questions/11206443/how-can-i-check-if-variable-contains-chinese-japanese-characters
+        return !character.match(/[\u3400-\u9FBF]/)
+    }
+
     const text = '<?= $input_text ?>';
 
     for (let i = 0; i < text.length; i++) {
@@ -53,8 +61,7 @@ $characters = str_split_unicode($input_text);
         // A reference to the element used by hanzi-writer to render chinese characters
         const hanziWriterElement = hanziWriterElementWithId(i);
 
-        // Sometimes the hanzi writer API successfully loads an unsupported characters (blank render)
-        if (character === '?') {
+        if (notChinese(character)) {
             hanziWriterElement.remove();
             continue;
         }
@@ -72,13 +79,7 @@ $characters = str_split_unicode($input_text);
                 // Display the hanziWriterElement only
                 characterParagraphWithId(i).remove();
 
-                /**
-                 * TODO:
-                 * Avoid 404 error from hanzi-writer-data API call.
-                 * Maybe possible to check if exists before request?
-                 * Maybe possible to load the characters in advance and avoid loading duplicates.
-                 */
-
+                // Add animations
                 hanziWriterElement.addEventListener('click', function () {
                     writer.animateCharacter();
                 });
