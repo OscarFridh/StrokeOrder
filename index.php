@@ -50,14 +50,14 @@ $characters = str_split_unicode($input_text);
 
         const character = text.charAt(i);
 
+        // A reference to the element used by hanzi-writer to render chinese characters
+        const hanziWriterElement = hanziWriterElementWithId(i);
+
         // Sometimes the hanzi writer API successfully loads an unsupported characters (blank render)
         if (character === '?') {
             hanziWriterElement.remove();
             continue;
         }
-
-        // A reference to the element used by hanzi-writer to render chinese characters
-        const hanziWriterElement = hanziWriterElementWithId(i);
 
 
         // Create and configure the object responsible for rendering this chinese character
