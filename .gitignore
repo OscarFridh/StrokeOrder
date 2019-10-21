@@ -1,2 +1,5 @@
+# PhpStorm IDE
 .idea
+
+# Other files to ignore
 .DS_Store
