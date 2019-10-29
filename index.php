@@ -18,7 +18,8 @@ $characters = str_split_unicode($input_text);
 <div id="container">
     <a href="https://github.com/OscarFridh/StrokeOrder">View on GitHub</a>
     <form>
-        <textarea name="text" id="input" cols="30" rows="10" placeholder="Enter a text in chinese characters"><?= $input_text ?></textarea>
+        <textarea name="text" id="input" cols="30" rows="10"
+                  placeholder="Enter a text in chinese characters"><?= $input_text ?></textarea>
         <button>Submit</button>
     </form>
     <div id="text-container">
