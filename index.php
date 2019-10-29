@@ -50,7 +50,12 @@ $characters = str_split_unicode($input_text);
         return !character.match(/[\u3400-\u9FBF]/)
     }
 
-    const text = '<?= $input_text ?>';
+    let text;
+    text = <?php
+    // Properly pass data from PHP to Javascript using json encoding.
+    // https://stackoverflow.com/questions/168214/pass-a-php-string-to-a-javascript-variable-and-escape-newlines
+    echo json_encode($input_text);
+    ?>;
 
     for (let i = 0; i < text.length; i++) {
 
