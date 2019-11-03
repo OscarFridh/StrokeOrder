@@ -2,16 +2,15 @@
 
 require_once 'data.php';
 
-
-$list = array();
-$lists = createMidTermGlossaries();
+$glossaries = array();
+$glossary_lists = createMidTermGlossaries();
 foreach($_GET as $list_name => $state) {
-    foreach ($lists[$list_name] as $index => $data) {
-        array_push($list, $data);
+    foreach ($glossary_lists[$list_name] as $index => $glossary) {
+        array_push($glossaries, $glossary);
     }
 }
 
-shuffle($list);
+shuffle($glossaries);
 
 ?>
 <!DOCTYPE html>
@@ -22,9 +21,9 @@ shuffle($list);
 </head>
 <body>
 <ol>
-    <?php foreach ($list as $index => $item): ?>
+    <?php foreach ($glossaries as $index => $glossary): ?>
         <li>
-            <a href="<?= '../?text=' . urlencode($item->getChinese()); ?>"><?= $item->getEnglish() ?></a>
+            <a href="<?= '../?text=' . urlencode($glossary->getChinese()); ?>"><?= $glossary->getEnglish() ?></a>
         </li>
     <?php endforeach; ?>
 </ol>
