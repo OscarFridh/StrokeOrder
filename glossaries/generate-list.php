@@ -8,11 +8,11 @@ $list = array();
 $lists = createMidTermGlossaries();
 foreach($_GET as $list_name => $state) {
     foreach ($lists[$list_name] as $index => $data) {
-        $list[$data['english']] = $data['chinese'];
+        array_push($list, $data);
     }
 }
 
-shuffle_assoc($list);
+shuffle($list);
 
 ?>
 <!DOCTYPE html>
@@ -23,9 +23,9 @@ shuffle_assoc($list);
 </head>
 <body>
 <ol>
-    <?php foreach ($list as $english => $character): ?>
+    <?php foreach ($list as $index => $item): ?>
         <li>
-            <a href="<?= '../?text=' . urlencode($character); ?>"><?= $english ?></a>
+            <a href="<?= '../?text=' . urlencode($item['chinese']); ?>"><?= $item['english'] ?></a>
         </li>
     <?php endforeach; ?>
 </ol>
