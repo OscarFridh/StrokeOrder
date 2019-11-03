@@ -1,8 +1,6 @@
 <?php
 
 require_once 'data.php';
-require_once '../helpers.php';
-
 
 $lists = $glossaries['midterm'];
 
@@ -14,13 +12,15 @@ $lists = $glossaries['midterm'];
     <title>Select Glossaries</title>
 </head>
 <body>
-<ul>
-    <?php foreach ($lists as $list_name => $list_data): ?>
-        <li>
-            <input type="checkbox"/><?= $list_name ?>
-        </li>
-    <?php endforeach; ?>
-</ul>
-<button>Submit</button>
+<form action="generate-list.php">
+    <ul>
+        <?php foreach ($lists as $list_name => $list_data): ?>
+            <li>
+                <input name="<?= $list_name ?>" type="checkbox"/><?= $list_name ?>
+            </li>
+        <?php endforeach; ?>
+    </ul>
+    <button>Submit</button>
+</form>
 </body>
 </html>

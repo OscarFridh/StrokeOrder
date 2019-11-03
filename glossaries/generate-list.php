@@ -1,9 +1,13 @@
 <?php
 
+// TODO: Build up array from data based on GET parameters
+
 if(!isset($glossaries)) {
-    // TODO: Read from POST parameters instead!
+    // TODO: Read from GET parameters instead!
     die('Set `glossaries` to a dictinoary with key value pairs (english -> chinese) before including this script.');
 }
+
+// TODO: Shuffle here!
 
 ?>
 <!DOCTYPE html>
