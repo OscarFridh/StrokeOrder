@@ -1,5 +1,7 @@
 <?php
 
+require_once '../helpers.php';
+
 $glossaries = [
     'roomate' => '同屋',
     'Company, corporation' => '公司',
@@ -10,20 +12,6 @@ $glossaries = [
     'Chat' => '聊天儿'
 ];
 
-// https://www.php.net/manual/en/function.shuffle.php
-function shuffle_assoc(&$array) {
-    $keys = array_keys($array);
-
-    shuffle($keys);
-
-    foreach($keys as $key) {
-        $new[$key] = $array[$key];
-    }
-
-    $array = $new;
-
-    return true;
-}
 
 shuffle_assoc($glossaries);
 

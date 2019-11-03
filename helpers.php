@@ -15,3 +15,19 @@ function str_split_unicode($str, $l = 0)
     }
     return preg_split("//u", $str, -1, PREG_SPLIT_NO_EMPTY);
 }
+
+// Reorder an array while keeping its key value pairs.
+// https://www.php.net/manual/en/function.shuffle.php
+function shuffle_assoc(&$array) {
+    $keys = array_keys($array);
+
+    shuffle($keys);
+
+    foreach($keys as $key) {
+        $new[$key] = $array[$key];
+    }
+
+    $array = $new;
+
+    return true;
+}
