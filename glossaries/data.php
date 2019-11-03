@@ -1,40 +1,21 @@
 <?php
 
+require_once 'Glossary.php';
+
 function createMidTermGlossaries() {
     return [
         'chapter11-1' => [
-            [
-                'english' => 'roomate',
-                'chinese' => '同屋',
-            ],
-            [
-                'english' => 'Company, corporation',
-                'chinese' => '公司',
-            ],
+            new Glossary('roomate', '同屋'),
+            new Glossary('Company, corporation', '公司'),
         ],
         'chapter11-2' => [
-            [
-                'english' => 'Go to work, be on duty',
-                'chinese' => '上班',
-            ],
-            [
-                'english' => 'Weekend',
-                'chinese' => '周末',
-            ],
+            new Glossary('Go to work, be on duty', '上班'),
+            new Glossary('Weekend', '周末'),
         ],
         'chapter11-3' => [
-            [
-                'english' => 'Ordinary times, normal times',
-                'chinese' => '平时',
-            ],
-            [
-                'english' => 'School, educational institution',
-                'chinese' => '学校',
-            ],
-            [
-                'english' => 'Chat',
-                'chinese' => '聊天儿',
-            ],
+            new Glossary('Ordinary times, normal times', '平时'),
+            new Glossary('School, educational institution', '学校'),
+            new Glossary('Chat', '聊天儿'),
         ]
     ];
 }

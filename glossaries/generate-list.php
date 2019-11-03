@@ -24,7 +24,7 @@ shuffle($list);
 <ol>
     <?php foreach ($list as $index => $item): ?>
         <li>
-            <a href="<?= '../?text=' . urlencode($item['chinese']); ?>"><?= $item['english'] ?></a>
+            <a href="<?= '../?text=' . urlencode($item->getChinese()); ?>"><?= $item->getEnglish() ?></a>
         </li>
     <?php endforeach; ?>
 </ol>
