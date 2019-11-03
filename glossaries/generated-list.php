@@ -2,6 +2,10 @@
 
 require_once '../helpers.php';
 
+if(!isset($glossaries)) {
+    die('Set `glossaries` to a dictinoary with key value pairs (english -> chinese) before including this script.');
+}
+
 $glossaries = [
     'roomate' => '同屋',
     'Company, corporation' => '公司',
