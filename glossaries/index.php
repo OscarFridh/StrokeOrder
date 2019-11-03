@@ -2,7 +2,7 @@
 
 require_once 'data.php';
 
-$lists = $glossaries['midterm'];
+$lists = createMidTermGlossaries();
 
 ?>
 <!DOCTYPE html>

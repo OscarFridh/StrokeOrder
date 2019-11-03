@@ -1,8 +1,7 @@
 <?php
 
-// TODO: Refactor names
-$glossaries = [
-    'midterm' => [
+function createMidTermGlossaries() {
+    return [
         'chapter11-1' => [
             'roomate' => '同屋',
             'Company, corporation' => '公司',
@@ -16,5 +15,5 @@ $glossaries = [
             'School, educational institution' =>'学校',
             'Chat' => '聊天儿',
         ]
-    ],
-];
+    ];
+}

@@ -5,7 +5,7 @@ require_once '../helpers.php';
 
 
 $list = array();
-$lists = $glossaries['midterm'];
+$lists = createMidTermGlossaries();
 foreach($_GET as $list_name => $state) {
     foreach ($lists[$list_name] as $english => $character) {
         $list[$english] = $character;
