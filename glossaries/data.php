@@ -1,5 +1,6 @@
 <?php
 
+// TODO: Refactor names
 $glossaries = [
     'midterm' => [
         'chapter11-1' => [

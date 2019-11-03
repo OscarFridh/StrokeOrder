@@ -1,13 +1,18 @@
 <?php
 
-// TODO: Build up array from data based on GET parameters
+require_once 'data.php';
+require_once '../helpers.php';
 
-if(!isset($glossaries)) {
-    // TODO: Read from GET parameters instead!
-    die('Set `glossaries` to a dictinoary with key value pairs (english -> chinese) before including this script.');
+
+$list = array();
+$lists = $glossaries['midterm'];
+foreach($_GET as $list_name => $state) {
+    foreach ($lists[$list_name] as $english => $character) {
+        $list[$english] = $character;
+    }
 }
 
-// TODO: Shuffle here!
+shuffle_assoc($list);
 
 ?>
 <!DOCTYPE html>
@@ -18,7 +23,7 @@ if(!isset($glossaries)) {
 </head>
 <body>
 <ol>
-    <?php foreach ($glossaries as $english => $character): ?>
+    <?php foreach ($list as $english => $character): ?>
         <li>
             <a href="<?= '../?text=' . urlencode($character); ?>"><?= $english ?></a>
         </li>
