@@ -3,17 +3,38 @@
 function createMidTermGlossaries() {
     return [
         'chapter11-1' => [
-            'roomate' => '同屋',
-            'Company, corporation' => '公司',
+            [
+                'english' => 'roomate',
+                'chinese' => '同屋',
+            ],
+            [
+                'english' => 'Company, corporation',
+                'chinese' => '公司',
+            ],
         ],
         'chapter11-2' => [
-            'Go to work, be on duty' =>'上班',
-            'Weekend' =>'周末',
+            [
+                'english' => 'Go to work, be on duty',
+                'chinese' => '上班',
+            ],
+            [
+                'english' => 'Weekend',
+                'chinese' => '周末',
+            ],
         ],
         'chapter11-3' => [
-            'Ordinary times, normal times' =>'平时',
-            'School, educational institution' =>'学校',
-            'Chat' => '聊天儿',
+            [
+                'english' => 'Ordinary times, normal times',
+                'chinese' => '平时',
+            ],
+            [
+                'english' => 'School, educational institution',
+                'chinese' => '学校',
+            ],
+            [
+                'english' => 'Chat',
+                'chinese' => '聊天儿',
+            ],
         ]
     ];
 }
