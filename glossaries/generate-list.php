@@ -3,7 +3,7 @@
 require_once 'data.php';
 
 $glossaries = array();
-$glossary_lists = createMidTermGlossaries();
+$glossary_lists = createMidTermGlossaryLists();
 foreach($_GET as $list_name => $state) {
     foreach ($glossary_lists[$list_name] as $index => $glossary) {
         array_push($glossaries, $glossary);

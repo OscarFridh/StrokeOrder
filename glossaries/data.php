@@ -2,7 +2,7 @@
 
 require_once 'Glossary.php';
 
-function createMidTermGlossaries() {
+function createMidTermGlossaryLists() {
     return [
         'chapter11-1' => [
             new Glossary('roomate', '同屋'),
