@@ -1,6 +1,6 @@
 <?php
 
-require_once 'data.php';
+require_once 'mid-term-glossaries.php';
 
 $lists = createMidTermGlossaryLists();
 
