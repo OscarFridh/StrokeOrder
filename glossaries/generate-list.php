@@ -1,6 +1,6 @@
 <?php
 
-require_once 'data/mid-term-glossaries.php';
+require_once 'data/glossaries.php';
 
 $glossaryLists = array_filter(createMidTermGlossaryLists(), function($list) {
     return in_array($list->getIdentifier(), array_keys($_GET));
