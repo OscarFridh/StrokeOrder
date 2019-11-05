@@ -5,7 +5,7 @@ class Glossary
 {
 
     private $chinese;
-    private $english;
+    private $translation;
 
     /**
      * @return string
@@ -18,15 +18,15 @@ class Glossary
     /**
      * @return string
      */
-    public function getEnglish()
+    public function getTranslation()
     {
-        return $this->english;
+        return $this->translation;
     }
 
-    public function __construct($chinese, $english)
+    public function __construct($chinese, $translation)
     {
         $this->chinese = $chinese;
-        $this->english = $english;
+        $this->translation = $translation;
     }
 
 }

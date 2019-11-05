@@ -24,7 +24,7 @@ shuffle($glossaries);
 <ol>
     <?php foreach ($glossaries as $index => $glossary): ?>
         <li>
-            <a href="<?= '../?text=' . urlencode($glossary->getChinese()); ?>"><?= $glossary->getEnglish() ?></a>
+            <a href="<?= '../?text=' . urlencode($glossary->getChinese()); ?>"><?= $glossary->getTranslation() ?></a>
         </li>
     <?php endforeach; ?>
 </ol>
