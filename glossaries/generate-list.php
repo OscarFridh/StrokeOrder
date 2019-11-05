@@ -2,7 +2,7 @@
 
 require_once 'data/glossaries.php';
 
-$glossaryLists = array_filter(createMidTermGlossaryLists(), function($list) {
+$glossaryLists = array_filter(createGlossaryLists(), function($list) {
     return in_array($list->getIdentifier(), array_keys($_GET));
 });
 

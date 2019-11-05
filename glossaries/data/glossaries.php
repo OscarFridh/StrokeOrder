@@ -7,7 +7,7 @@ require_once 'Midterm3.php';
 require_once 'Midterm4.php';
 require_once 'Midterm5.php';
 
-function createMidTermGlossaryLists() {
+function createGlossaryLists() {
     return [
         new Midterm1(),
         new Midterm2(),
