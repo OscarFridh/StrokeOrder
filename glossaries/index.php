@@ -14,9 +14,9 @@ $lists = createMidTermGlossaryLists();
 <body>
 <form action="generate-list.php">
     <ul>
-        <?php foreach ($lists as $list_name => $list_data): ?>
+        <?php foreach ($lists as $list): ?>
             <li>
-                <input name="<?= $list_name ?>" type="checkbox"/><?= $list_name ?>
+                <input name="<?= $list->getIdentifier() ?>" type="checkbox"/><?= $list->getName() ?>
             </li>
         <?php endforeach; ?>
     </ul>

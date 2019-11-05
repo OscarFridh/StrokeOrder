@@ -1,89 +1,18 @@
 <?php
 
 require_once 'Glossary.php';
+require_once 'Midterm1.php';
+require_once 'Midterm2.php';
+require_once 'Midterm3.php';
+require_once 'Midterm4.php';
+require_once 'Midterm5.php';
 
 function createMidTermGlossaryLists() {
     return [
-        '11课' => [
-            new Glossary('同屋', 'Roommate'),
-            new Glossary('公司', 'Company, corporation'),
-            new Glossary('工作', 'Work'),
-            new Glossary('上班', 'Go to work, be on duty'),
-            new Glossary('周末', 'Weekend'),
-            new Glossary('平时', 'Ordinary times, normal times'),
-            new Glossary('学校', 'School, educational institution'),
-            new Glossary('聊天儿', 'Chat'),
-            new Glossary('喜欢', 'Like, love, be fond of'),
-            new Glossary('一般', 'General, ordinary, usual'),
-            new Glossary('东西', 'Thing, stuff'),
-            new Glossary('一块儿', 'Together, in company'),
-            new Glossary('收拾', 'Put in order, tidy up, clear away'),
-            new Glossary('房间', 'Room'),
-        ],
-        '12课' => [
-            new Glossary('兴趣', 'Interest'),
-            new Glossary('感兴趣', 'To be interested in'),
-            new Glossary('可是', 'But, yet, however'),
-            new Glossary('一样', 'Same, identical'),
-            new Glossary('还是', 'Or'),
-            new Glossary('运动', 'Sports, athletics, exercise'),
-            new Glossary('身体', 'Body, health'),
-            new Glossary('爱好', 'Hobby'),
-            new Glossary('最', 'Most, least, best, to the highest or lowest degree'),
-            new Glossary('没错儿', 'Right, exactly'),
-        ],
-        '13课' => [
-            new Glossary('方便', 'Convenient'),
-            new Glossary('贵', 'Expensive'),
-            new Glossary('每', 'Every, each'),
-            new Glossary('最后', 'Final, last'),
-            new Glossary('又', 'Again'),
-            new Glossary('满意', 'Be satisfied, be pleased'),
-            new Glossary('已经', 'Already'),
-            new Glossary('不错', 'Not bad, pretty good'),
-            new Glossary('离', 'From, away from'),
-            new Glossary('远', 'Far, faraway'),
-            new Glossary('走路', 'Walk'),
-            new Glossary('行', 'Be all right, will do'),
-            new Glossary('没有', 'Not yet'),
-            new Glossary('昨天', 'Yesterday'),
-            new Glossary('请客', 'Treat sb. (to a dinner, performance, etc.), entertain guests'),
-            new Glossary('怎么', 'Used to inquire about nature, condition, cause, etc.'),
-            new Glossary('来', 'Come'),
-            new Glossary('玩儿', 'Play, have fun'),
-        ],
-        '14课' => [
-            new Glossary('今年', 'This year'),
-            new Glossary('特别', 'Especially, particularly'),
-            new Glossary('看病', 'See a doctor, consult a doctor'),
-            new Glossary('这么', 'So, such'),
-            new Glossary('生病', 'Fall ill, be ill, be sick'),
-            new Glossary('天气', 'Weather'),
-            new Glossary('但是', 'But, however'),
-            new Glossary('有空儿', 'Have time off, be free'),
-        ],
-        '15课' => [
-            new Glossary('打工', 'Have a temporary job'),
-            new Glossary('挣钱', 'Earn money, make money'),
-            new Glossary('告诉', 'Tell, let know'),
-            new Glossary('要', 'Want, wish'),
-            new Glossary('会', 'Be acquainted width, have knowledge of'),
-            new Glossary('合适', 'Proper suitable'),
-            new Glossary('可以', 'Can, may'),
-            new Glossary('互相', 'Each other, mutually'),
-            new Glossary('能', 'Can, be able to'),
-            new Glossary('大学', 'College, university'),
-            new Glossary('或者', 'Or'),
-            new Glossary('帮忙', 'Help, do a favour, give (lend) a hand'),
-            new Glossary('放假', 'To have a holiday or vacation'),
-            new Glossary('旅游', 'To travel, to tour'),
-            new Glossary('假期', 'Vacation, holliday'),
-            new Glossary('回', 'Return, go back'),
-            new Glossary('开车', 'To drive a vehicle, automobile (car)'),
-            new Glossary('陪', 'Keep sb. company, to accompany'),
-            new Glossary('帮', 'To help'),
-            new Glossary('比较', 'Comparatively, relatively'),
-            new Glossary('感谢', 'Thank, be grateful'),
-        ],
+        new Midterm1(),
+        new Midterm2(),
+        new Midterm3(),
+        new Midterm4(),
+        new Midterm5()
     ];
 }

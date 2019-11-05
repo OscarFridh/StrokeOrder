@@ -2,12 +2,13 @@
 
 require_once 'data/mid-term-glossaries.php';
 
+$glossaryLists = array_filter(createMidTermGlossaryLists(), function($list) {
+    return in_array($list->getIdentifier(), array_keys($_GET));
+});
+
 $glossaries = array();
-$glossary_lists = createMidTermGlossaryLists();
-foreach($_GET as $list_name => $state) {
-    foreach ($glossary_lists[$list_name] as $index => $glossary) {
-        array_push($glossaries, $glossary);
-    }
+foreach ($glossaryLists as $glossaryList) {
+    $glossaries = array_merge($glossaries, $glossaryList->createGlossaries());
 }
 
 shuffle($glossaries);
