@@ -11,7 +11,9 @@ foreach ($glossaryLists as $glossaryList) {
     $glossaries = array_merge($glossaries, $glossaryList->createGlossaries());
 }
 
-shuffle($glossaries);
+if($_GET['shuffle'] !== 'off') {
+    shuffle($glossaries);
+}
 
 ?>
 <!DOCTYPE html>
