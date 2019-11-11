@@ -5,6 +5,7 @@ require_once 'Glossary.php';
 require_once 'Chapter3_1.php';
 
 require_once 'Chapter16_1.php';
+require_once 'Chapter16_2.php';
 
 require_once 'Midterm1.php';
 require_once 'Midterm2.php';
@@ -18,6 +19,7 @@ function createGlossaryLists() {
         new Chapter3_1(),
 
         new Chapter16_1(),
+        new Chapter16_2(),
 
         new Midterm1(),
         new Midterm2(),
