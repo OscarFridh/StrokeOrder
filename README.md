@@ -1,11 +1,6 @@
-# StrokeOrder
+# About
 
-This project was created to help studying Chinese characters and their stroke order. Enter a text in Chinese and tap a character to show the correct stroke order. The website is hosted on [http://oscarfridh.se/chinese-stroke-order/](http://oscarfridh.se/chinese-stroke-order/).
-
-Mid term characters: http://oscarfridh.se/chinese-stroke-order/glossaries/
-
-
-Over 9000 animatable Chinese characters are supported thanks to the [hanzi-writer](https://chanind.github.io/hanzi-writer/) API.
+This project was created to help studying Chinese characters and their stroke order. Enter a text in Chinese and tap a character to show the correct stroke order. Over 9000 animatable Chinese characters are supported thanks to the [hanzi-writer](https://chanind.github.io/hanzi-writer/) API.
 
 ## Getting started
 
